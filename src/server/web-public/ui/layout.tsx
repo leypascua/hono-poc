@@ -5,25 +5,32 @@ import { JSXNode } from 'hono/jsx'
 
 interface PageProps {
   title?: string,
-  children: Array<any>
+  children: any
 }
 
 const Page = (props: PageProps) => {
   let head: any = undefined;
-  const children: Array<any> = [];
+  let children: Array<any> = [];
 
-  props.children.forEach(child => {
-    const isHead = child.tag && 
-      typeof child.tag === 'function' &&
-      (child.tag.name && child.tag.name === "Head");
+  if (props.children.forEach) {
+    // @ts-ignore
+    props.children.forEach(child => {
+      const isHead = child.tag && 
+        typeof child.tag === 'function' &&
+        (child.tag.name && child.tag.name === "Head");
 
-    if (isHead) {
-      head = child;
-    }
-    else {
-      children.push(child);
-    }
-  });
+      if (isHead) {
+        head = child;
+      }
+      else {
+        children.push(child);
+      }
+    });
+  }
+  else {
+    children = props.children;
+  }
+  
   
   let headTexts: string = '';
   if (head && head.children) {

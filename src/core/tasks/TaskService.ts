@@ -1,6 +1,6 @@
 import { TaskData } from './TaskData'
 
-export type SearchTaskArgs = 
+export type SearchTaskArgs =
 {
     id?: string
 }
@@ -12,13 +12,11 @@ const taskList: Array<TaskData> = [
 ];
 
 export async function searchTasks(args?: SearchTaskArgs) : Promise<Array<TaskData>> {
-    return new Promise<Array<TaskData>>((resolve) => {
-        let result = taskList;
+    let result = taskList;
         
-        if (args && args.id) {
-            result = taskList.filter(t => t.id === args.id);
-        }
-
-        resolve(result);
-    });
+    if (args && args.id) {
+        result = taskList.filter(t => t.id === args.id);
+    }
+    
+    return await Promise.resolve(result);
 };

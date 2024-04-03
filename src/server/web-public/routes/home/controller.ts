@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import IndexView from './views.Index'
+import {HomeView} from './views'
 
 const homeController = new Hono();
 
@@ -11,7 +11,7 @@ homeController.get('/', (c) => {
         lastName: lname || "BAR"
     }
     
-    return c.render(IndexView(vm));
+    return c.render(HomeView(vm));
 });
 
 export default homeController;

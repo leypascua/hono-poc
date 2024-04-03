@@ -1,17 +1,16 @@
 import { Hono } from 'hono'
-import { searchTasks } from '@core/tasks/TaskService.js'
-import IndexView, { TasksIndexViewModel } from './v_Index.js'
-import TaskDetailView from './v_TaskDetail'
+import { searchTasks } from '@core/tasks/TaskService'
+import { TaskListView, TaskDetailsView } from './views'
+
 
 const tasksController = new Hono();
 
 tasksController.get('/', async (c) => {
-    
     // hit a database
     const tasks = await searchTasks();
-    var vm: TasksIndexViewModel = { tasks };
+    const vm = { tasks };
 
-    return c.render(IndexView(vm));
+    return c.render(TaskListView(vm));
 });
 
 tasksController.get('/:id', async (c) => {
@@ -19,7 +18,7 @@ tasksController.get('/:id', async (c) => {
 
     return results === undefined || (results && results.length === 0) ?
         c.notFound() :
-        c.render(TaskDetailView(results[0]));
+        c.render(TaskDetailsView(results[0]));
 });
 
 export default tasksController;

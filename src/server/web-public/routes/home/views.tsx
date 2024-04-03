@@ -8,7 +8,7 @@ export type IndexViewModel =
     lastName?: string
 }
 
-const View = (props: IndexViewModel) => (
+const HomeView = (props: IndexViewModel) => (
 <Page title="This is a view-specific title.">
     {/* sometimes, we need to add page-specific stuff into <head> */}
     <Head>
@@ -36,4 +36,4 @@ const View = (props: IndexViewModel) => (
 </Page>
 );
 
-export default View;
+export {HomeView};
