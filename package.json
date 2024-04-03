@@ -7,7 +7,7 @@
     "dev-node": "tsx watch src/server/node.server.ts",
     
     "vite-build": "vite build",
-    "wpreview": "wrangler pages dev dist",
+    "wbuild": "wrangler build",
     "wdeploy": "wrangler deploy --minify src/server/cfpages.server.ts",
     "wdev": "wrangler dev src/server/cfpages.server.ts",
     "dev-vite": "vite",

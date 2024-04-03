@@ -5,14 +5,21 @@ import { defineConfig } from 'vite'
 import path from "path"
 
 export default defineConfig({
+  server: {
+    port: 4000
+  },
+  
   plugins: [
     build(),
     devServer({
       adapter,
-      entry: 'src/server/cfpages.server.ts'
+      entry: 'src/server/vite.server.ts',
+      injectClientScript: false,
     })
   ],
 
+  publicDir: './assets/',
+  
   resolve: {
     alias: [
       {
