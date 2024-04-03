@@ -69,4 +69,4 @@ const Content: FC = (props) => (
   </>
 );
 
-export { Page, Content };
+export { Page, PageProps, Content };
