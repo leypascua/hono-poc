@@ -1,6 +1,6 @@
 name = "hono-poc"
 compatibility_date = "2023-12-01"
-main = "src/server/cfpages.server.ts"
+main = "src/server/wrangler.server.ts"
 
 [site]
 bucket = "./assets"
